@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Test Drive"
+             x:Class="MeuPrimeiroAppXamarin.Views.ListagemView">
+
+    <!--StackLayout, cria layour para empilhar os componentes e controles-->
+    <!--Grid, cria um layout de "grade"-->
+    <!--ListView, cria um componente para listar dados vindos do c# -->
+
+    <!--Binding, faz a união do componente com o dado recebido-->
+    <!--ItemTapped, chama um metodo que executa uma ação ao tocar em um item da lista-->
+    <ListView  x:Name="ListViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="25" ItemTapped="ListViewVeiculos_ItemTapped">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Nome}" FontSize="15" VerticalTextAlignment="Center"></Label>
+                            <Label Text="{Binding Ano}" FontSize="15" VerticalTextAlignment="Center"></Label>
+                            <Label Text="{Binding PrecoFormatado}" FontSize="15" VerticalTextAlignment="Center"></Label>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        
+    </ListView>
+
+</ContentPage>

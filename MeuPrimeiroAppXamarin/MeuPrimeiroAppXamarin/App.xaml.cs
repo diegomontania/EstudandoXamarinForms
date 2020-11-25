@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeuPrimeiroAppXamarin.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,8 @@ namespace MeuPrimeiroAppXamarin
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //inicia aplicação por essa 'view'
+            MainPage = new NavigationPage(new ListagemView());
         }
 
         protected override void OnStart()
