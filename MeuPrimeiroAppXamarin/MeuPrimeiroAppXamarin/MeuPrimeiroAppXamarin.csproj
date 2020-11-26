@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\DetalheView.xaml.cs">
+      <DependentUpon>DetalheView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ListagemView.xaml.cs">
       <DependentUpon>ListagemView.xaml</DependentUpon>
     </Compile>
@@ -25,7 +28,7 @@
     <EmbeddedResource Update="Views\AgendamentoView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DetalheViewxaml.xaml">
+    <EmbeddedResource Update="Views\DetalheView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

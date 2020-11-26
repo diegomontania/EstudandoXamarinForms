@@ -9,9 +9,13 @@ namespace MeuPrimeiroAppXamarin.Views
         //cria propriedade que receberá a lista de veiculos
         public List<Veiculo> Veiculos { get; set; }
 
+        public string TituloInicial { get; set; }
+
         public ListagemView()
         {
             InitializeComponent();
+
+            this.TituloInicial = "Test Drive - Início";
 
             //popula lista com valores
             Veiculos = new List<Veiculo>
@@ -38,7 +42,7 @@ namespace MeuPrimeiroAppXamarin.Views
             //coloca uma nova página em cima da página atual fazendo uma 'pilha de navegação'
 
             //chama a próxima página
-            Navigation.PushAsync(new DetalheViewxaml(veiculo));
+            Navigation.PushAsync(new DetalheView(veiculo));
         }
     }
 }

@@ -12,7 +12,7 @@ namespace MeuPrimeiroAppXamarin.Classes
         public decimal Preco { get; set; }
         public string PrecoFormatado 
         {
-            get { return string.Format("R${0}", Preco); }
+            get { return string.Format($"R${Preco}"); }
         }
 
         public Veiculo()

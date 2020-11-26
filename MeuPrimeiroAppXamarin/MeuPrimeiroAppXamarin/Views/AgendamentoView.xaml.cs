@@ -5,11 +5,14 @@ namespace MeuPrimeiroAppXamarin.Views
 {
     public partial class AgendamentoView : ContentPage
     {
+        public Veiculo Veiculo { get; set; }
+
         public AgendamentoView(Veiculo veiculo)
         {
             InitializeComponent();
-
-            this.Title = veiculo.Nome + " - agendamento";
+            this.Veiculo = veiculo;
+            this.Title = veiculo.Nome + " - Agendamento";
+            this.BindingContext = this;
         }
     }
 }

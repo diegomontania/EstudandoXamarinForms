@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--recebendo titulo também via binding-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeuPrimeiroAppXamarin.Views.DetalheView">
+
+    <Label Text="Esta é a página de detalhe" 
+           VerticalOptions="CenterAndExpand" 
+           HorizontalOptions="CenterAndExpand"/>
+
+    <StackLayout Padding="25">
+        <TableView Intent="Settings">
+            <!--TableRoot, para criar listas de configurações, formulários de dados ou dados cujo formato muda de linha para linha-->
+            <TableRoot>
+                <TableSection Title="Acessórios">
+                    <SwitchCell Text="{Binding FreioAbs}" On="{Binding TemFreioAbs, Mode=TwoWay}" />
+                    <SwitchCell Text="{Binding ArCondicionado}" On="{Binding TemArCondicionado, Mode=TwoWay}" />
+                    <SwitchCell Text="{Binding Mp3Player}" On="{Binding TemMp3Player, Mode=TwoWay}" />
+                    <TextCell Text="{Binding ValorTotal, Mode=TwoWay}" Detail="Valor total pago a vista" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+
+        <Button x:Name="btnProximaPagina" Text="Próximo" Clicked="btnProximaPagina_Clicked"
+                VerticalOptions="End"></Button>
+    </StackLayout>
+
+</ContentPage>

@@ -8,20 +8,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("MeuPrimeiroAppXamarin.Views.DetalheViewxaml.xaml", "Views/DetalheViewxaml.xaml", typeof(global::MeuPrimeiroAppXamarin.Views.DetalheViewxaml))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("MeuPrimeiroAppXamarin.Views.DetalheView.xaml", "Views/DetalheView.xaml", typeof(global::MeuPrimeiroAppXamarin.Views.DetalheView))]
 
 namespace MeuPrimeiroAppXamarin.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\DetalheViewxaml.xaml")]
-    public partial class DetalheViewxaml : global::Xamarin.Forms.ContentPage {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\DetalheView.xaml")]
+    public partial class DetalheView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Button btnProximaPagina;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(DetalheViewxaml));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(DetalheView));
             btnProximaPagina = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "btnProximaPagina");
         }
     }
