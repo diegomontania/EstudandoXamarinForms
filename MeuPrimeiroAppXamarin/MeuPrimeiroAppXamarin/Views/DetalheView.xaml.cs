@@ -10,7 +10,7 @@ namespace MeuPrimeiroAppXamarin.Views
         private const int AR_CONDICIONADO = 1000;
         private const int MP3_PLAYER = 500;
 
-        public Veiculo Veiculo { get; set; }
+        public VeiculoModel Veiculo { get; set; }
 
         public string FreioAbs 
         {   
@@ -87,7 +87,7 @@ namespace MeuPrimeiroAppXamarin.Views
             }
         }
 
-        public DetalheView(Veiculo veiculo)
+        public DetalheView(VeiculoModel veiculo)
         {
             InitializeComponent();
             this.Title = veiculo.Nome + " - Detalhes";

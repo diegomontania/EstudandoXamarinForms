@@ -6,7 +6,7 @@ namespace MeuPrimeiroAppXamarin.Views
 {
     public partial class AgendamentoView : ContentPage
     {
-        public Veiculo Veiculo { get; set; }
+        public VeiculoModel Veiculo { get; set; }
 
         public string Nome { get; set; }
         public int Idade { get; set; }
@@ -17,19 +17,19 @@ namespace MeuPrimeiroAppXamarin.Views
         public DateTime DataAgendamento { get; set; }
         public TimeSpan HoraAgendamento { get; set; }
 
-        public AgendamentoView(Veiculo veiculo)
+        public AgendamentoView(VeiculoModel veiculo)
         {
             InitializeComponent();
             this.Veiculo = veiculo;
             this.Title = veiculo.Nome + " - Agendamento";
-            this.DataAgendamento = DateTime.Now;
+            this.DataAgendamento = DateTime.Today;
             this.BindingContext = this;
         }
 
         private void btnAgendamento_Clicked(object sender, EventArgs e)
         {
             DisplayAlert("Agendamento concluído!", 
-                $"{Nome}, seu agendamento para o dia {DataAgendamento} as {HoraAgendamento}, " +
+                $"{Nome}, seu agendamento para o dia {DataAgendamento:dd/MM/yyyy} as {HoraAgendamento}, " +
                 $"foi agendado com sucesso!", 
                 "ok");
         }

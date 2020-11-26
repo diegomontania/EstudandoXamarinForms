@@ -5,7 +5,7 @@ using System.Text;
 namespace MeuPrimeiroAppXamarin.Classes
 {
     //classe com as propriedades do veiculo
-    public class Veiculo
+    public class VeiculoModel
     {
         public string Nome { get; set; }
         public int Ano { get; set; }
@@ -15,7 +15,7 @@ namespace MeuPrimeiroAppXamarin.Classes
             get { return string.Format($"R${Preco}"); }
         }
 
-        public Veiculo()
+        public VeiculoModel()
         {
 
         }
