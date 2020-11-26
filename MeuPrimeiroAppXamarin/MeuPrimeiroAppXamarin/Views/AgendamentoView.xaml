@@ -3,10 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MeuPrimeiroAppXamarin.Views.AgendamentoView">
 
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+    <StackLayout Margin="25">
+        <!--TableView, para armazenar os dados que o usuário irá inserir-->
+        <TableView>
+            <TableRoot>
+                <TableSection Title="Seus dados">
+                    <EntryCell Label="Nome:" Text="{Binding Nome}"></EntryCell>
+                    <EntryCell Label="Idade:" Keyboard="Numeric" Text="{Binding Idade}"></EntryCell>
+                    <EntryCell Label="CPF:" Keyboard="Numeric" Text="{Binding Cpf}"></EntryCell>
+                    <EntryCell Label="Telefone:" Keyboard="Telephone" Text="{Binding Telefone}"></EntryCell>
+                    <EntryCell Label="Email:" Keyboard="Email" Text="{Binding Email}"></EntryCell>
+                </TableSection>
+
+                <TableSection Title="Agendamento">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Margin="15,0,0,0">
+                            <Label Text="Data :" FontSize="15" VerticalTextAlignment="Center"></Label>
+                            <DatePicker Date="{Binding DataAgendamento}"></DatePicker>
+                        </StackLayout>
+                    </ViewCell>
+
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Margin="15,0,0,0">
+                            <Label Text="Horário :" FontSize="15" VerticalTextAlignment="Center"></Label>
+                            <TimePicker Time="{Binding HoraAgendamento}" HorizontalOptions="End"></TimePicker>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+
+        <Button x:Name="btnAgendamento" Text="Agendar" Clicked="btnAgendamento_Clicked" BackgroundColor="Accent" TextColor="White"></Button>
+    </StackLayout>
 
 </ContentPage>

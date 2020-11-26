@@ -22,7 +22,8 @@ namespace MeuPrimeiroAppXamarin.Views
             {
                 new Veiculo { Nome = "Azera V6", Ano = 1994, Preco = 60000},
                 new Veiculo { Nome = "Azera V7", Ano = 1996, Preco = 70000},
-                new Veiculo { Nome = "Azera V8", Ano = 1999, Preco = 80000}
+                new Veiculo { Nome = "Azera V8", Ano = 1999, Preco = 80000},
+                new Veiculo { Nome = "Azera V9", Ano = 2000, Preco = 90000}
             };
 
             //PS: Os valores definidos aqui, são associados aos componentes xaml
@@ -35,14 +36,8 @@ namespace MeuPrimeiroAppXamarin.Views
         {
             var veiculo = (Veiculo)e.Item; /*convertendo um objeto genérico para um objeto veiculo*/
 
-            #region AlertaUsuario
-            //DisplayAlert("Veículo selecionado", $"{veiculo.Nome} do ano de : {veiculo.Ano}, custando {veiculo.Preco}", "Ok");
-            #endregion
-
             //coloca uma nova página em cima da página atual fazendo uma 'pilha de navegação'
-
-            //chama a próxima página
-            Navigation.PushAsync(new DetalheView(veiculo));
+            Navigation.PushAsync(new DetalheView(veiculo)); //chama a próxima página
         }
     }
 }

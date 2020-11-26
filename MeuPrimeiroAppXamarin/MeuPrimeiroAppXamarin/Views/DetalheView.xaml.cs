@@ -11,6 +11,7 @@ namespace MeuPrimeiroAppXamarin.Views
         private const int MP3_PLAYER = 500;
 
         public Veiculo Veiculo { get; set; }
+
         public string FreioAbs 
         {   
             get
@@ -32,8 +33,9 @@ namespace MeuPrimeiroAppXamarin.Views
                 return string.Format($"Mp3 Player - R$ {MP3_PLAYER}");
             }
         }
+
         private bool freioAbsSelecionado;
-        public bool TemFreioAbs/* { get; set; }*/
+        public bool TemFreioAbs
         {
             get
             {
@@ -46,16 +48,42 @@ namespace MeuPrimeiroAppXamarin.Views
                 OnPropertyChanged(nameof(ValorTotal));
             }
         }
-        public bool TemArCondicionado;
-        public bool TemMp3Player;
+
+        private bool arCondicionadoSelecionado;
+        public bool TemArCondicionado
+        {
+            get
+            {
+                return arCondicionadoSelecionado;
+            }
+            set
+            {
+                arCondicionadoSelecionado = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(ValorTotal));
+            }
+        }
+
+        private bool mp3PlayerSelecionado;
+        public bool TemMp3Player
+        {
+            get
+            {
+                return mp3PlayerSelecionado;
+            }
+            set
+            {
+                mp3PlayerSelecionado = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(ValorTotal));
+            }
+        }
+
         public string ValorTotal
         {
             get
             {
-                return string.Format
-                (
-                    $"Valor Total: R$ {Veiculo.Preco + (TemFreioAbs ? FREIO_ABS : 0)}"
-                );
+                return string.Format($"Valor Total: R$ {ValorTotalSomado(Veiculo.Preco)}");
             }
         }
 
@@ -67,7 +95,17 @@ namespace MeuPrimeiroAppXamarin.Views
             this.BindingContext = this;
         }
 
-        private void btnProximaPagina_Clicked(object sender, System.EventArgs e)
+        public decimal ValorTotalSomado(decimal precoVeiculo)
+        {
+            var total = precoVeiculo
+                + (TemFreioAbs ? FREIO_ABS : 0) 
+                + (TemArCondicionado ? AR_CONDICIONADO: 0)
+                + (TemMp3Player ? MP3_PLAYER : 0);
+
+            return total;
+        }
+
+        private void btnProximaPagina_Clicked(object sender, EventArgs e)
         {
             //chama a próxima página
             Navigation.PushAsync(new AgendamentoView(Veiculo));
