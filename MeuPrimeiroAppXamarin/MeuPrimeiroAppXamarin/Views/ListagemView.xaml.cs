@@ -17,7 +17,7 @@ namespace MeuPrimeiroAppXamarin.Views
             InitializeComponent();
 
             this.TituloInicial = "Test Drive - Início";
-            this.Veiculos = new ListagemVeiculos().Veiculos;
+            this.Veiculos = new ListagemVeiculosModel().Veiculos;
 
             //PS: Os valores definidos aqui, são associados aos componentes xaml
             //diretamente no xaml, pelo "Binding". Porém é necessário passar o contexto de binding.

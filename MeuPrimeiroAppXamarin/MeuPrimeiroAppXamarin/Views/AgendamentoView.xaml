@@ -33,7 +33,7 @@
             </TableRoot>
         </TableView>
 
-        <Button x:Name="btnAgendamento" Text="Agendar" Clicked="btnAgendamento_Clicked" BackgroundColor="Accent" TextColor="White"></Button>
+        <Button x:Name="btnAgendamento" Text="Agendar" Clicked="BtnAgendamento_Clicked" BackgroundColor="Accent" TextColor="White"></Button>
     </StackLayout>
 
 </ContentPage>
