@@ -18,6 +18,7 @@ namespace MeuPrimeiroAppXamarin.Classes
         {
             get { return string.Format($"R${Preco}"); }
         }
+        public string ImagemVeiculo { get; set; }
 
         //public string PrecoTotalFormatado { get; internal set; }
 
