@@ -14,7 +14,7 @@
     <StackLayout>
         <Label Text="Selecione um modelo :" Margin="25" FontSize="Title"></Label>
         <ListView  x:Name="ListViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="20" ItemTapped="ListViewVeiculos_ItemTapped">
-            <ListView.ItemTemplate >
+            <ListView.ItemTemplate>
                 <DataTemplate>
                     <ImageCell Text="{Binding Nome}" Detail="{Binding Ano}" ImageSource="{Binding ImagemVeiculo}"/>
                 </DataTemplate>

@@ -13,4 +13,3 @@ C:\Users\Diego\source\repos\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\MeuPrime
 C:\Users\Diego\source\repos\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\obj\Debug\netstandard2.0\Views\ListagemView.xaml.g.cs
 C:\Users\Diego\source\repos\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\obj\Debug\netstandard2.0\Views\AgendamentoView.xaml.g.cs
 C:\Users\Diego\source\repos\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\obj\Debug\netstandard2.0\Views\DetalheView.xaml.g.cs
-C:\Users\Diego\source\repos\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\obj\Debug\netstandard2.0\MeuPrimeiroAppXamarin.csprojAssemblyReference.cache

@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!--recebendo titulo também via binding-->
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MeuPrimeiroAppXamarin.Views.DetalheView">
-
+    
     <StackLayout Padding="25">
         <TableView Intent="Settings">
             <!--TableRoot, para criar listas de configurações, formulários de dados ou dados cujo formato muda de linha para linha-->
