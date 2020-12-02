@@ -17,12 +17,25 @@ namespace MeuPrimeiroAppXamarin.Views
             this.BindingContext = new ListagemViewModel();
         }
 
-        private void ListViewVeiculos_ItemTapped(object sender, ItemTappedEventArgs e)
+        //Ao abrir a view
+        protected override void OnAppearing()
         {
-            var veiculo = (Veiculo)e.Item; /*convertendo um objeto genérico para um objeto veiculo*/
+            base.OnAppearing();
 
-            //coloca uma nova página em cima da página atual fazendo uma 'pilha de navegação'
-            Navigation.PushAsync(new DetalheView(veiculo)); //chama a próxima página
+            //Assinando a mensagem
+            MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado", 
+                //funcao anonima que recebe e trata a mensagem e faz a execucao para a próxima pagina
+                (msg) =>
+                { 
+                    Navigation.PushAsync(new DetalheView(msg)); //chama a próxima página
+                });
+        }
+
+        //cancelando assinatura : evita criar multiplas mensagem do mesmo evento
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Veiculo>(this, "VeiculoSelecionado");
         }
     }
 }
