@@ -5,12 +5,15 @@ using System.Text;
 using MeuPrimeiroAppXamarin.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace MeuPrimeiroAppXamarin.ViewModels
 {
     public class DetalheViewModel : INotifyPropertyChanged
     {
         public Veiculo Veiculo { get; set; }
+        public ICommand ProximoCommand { get; set; }
 
         public string FreioAbs
         {
@@ -83,6 +86,12 @@ namespace MeuPrimeiroAppXamarin.ViewModels
         public DetalheViewModel(Veiculo veiculo)
         {
             this.Veiculo = veiculo;
+
+            /*instancia comando do botao*/
+            this.ProximoCommand = new Command(() =>
+            {
+                MessagingCenter.Send(veiculo, "Proximo"); /*envia mensagem do botao utilizando MessagingCenter*/
+            }); 
         }
 
         //implementa interface para que a view seja atualizada corretamente

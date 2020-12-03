@@ -13,3 +13,4 @@ C:\Users\Diego\source\repos\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\MeuPrime
 C:\Users\Diego\source\repos\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\obj\Debug\netstandard2.0\MeuPrimeiroAppXamarin.dll
 C:\Users\Diego\source\repos\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\obj\Debug\netstandard2.0\ref\MeuPrimeiroAppXamarin.dll
 C:\Users\Diego\source\repos\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\obj\Debug\netstandard2.0\MeuPrimeiroAppXamarin.pdb
+C:\Users\Diego\source\repos\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\MeuPrimeiroAppXamarin\obj\Debug\netstandard2.0\MeuPrimeiroAppXamarin.csprojAssemblyReference.cache

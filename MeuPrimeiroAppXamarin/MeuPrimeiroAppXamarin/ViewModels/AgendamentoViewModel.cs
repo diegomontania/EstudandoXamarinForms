@@ -3,6 +3,8 @@ using MeuPrimeiroAppXamarin.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace MeuPrimeiroAppXamarin.ViewModels
 {
@@ -51,12 +53,19 @@ namespace MeuPrimeiroAppXamarin.ViewModels
             set { Agendamento.HoraAgendamento = value; }
         }
 
+        public ICommand AgendarCommand { get; set; }
+
         public AgendamentoViewModel(Veiculo veiculo)
         {
             this.Agendamento = new Agendamento();
             this.Agendamento.Veiculo = veiculo;
             this.DataAgendamento = DateTime.Today;
             this.HoraAgendamento = DateTime.Now.TimeOfDay;
+            this.AgendarCommand = new Command(()=>
+            {
+                //envia mensagem do tipo do modelo que está sendo utilizado
+                MessagingCenter.Send<Agendamento>(this.Agendamento, "Agendamento");            
+            });
         }
     }
 }

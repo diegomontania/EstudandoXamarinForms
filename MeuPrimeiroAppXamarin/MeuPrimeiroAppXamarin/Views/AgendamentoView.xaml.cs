@@ -18,23 +18,32 @@ namespace MeuPrimeiroAppXamarin.Views
             this.Title = veiculo.Nome + " - Agendamento";
         }
 
-        private void BtnAgendamento_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            DisplayAlert("Agendamento",
-            string.Format(
-            @"
-            Veiculo: {0}
-            Nome: {1}
-            Fone: {2}
-            E-mail: {3}
-            Data Agendamento: {4}
-            Hora Agendamento: {5}",
-            ViewModel.Agendamento.Veiculo.Nome,
-            ViewModel.Agendamento.Nome,
-            ViewModel.Agendamento.Telefone,
-            ViewModel.Agendamento.Email,
-            ViewModel.Agendamento.DataAgendamento.ToString("dd/MM/yyyy"),
-            ViewModel.Agendamento.HoraAgendamento.ToString("hh\\:mm")), "OK");
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Agendamento>(this, "Agendamento", (msg) =>
+            {
+                DisplayAlert("Agendamento confirmado!",
+                string.Format(
+@"Veiculo: {0}
+Nome: {1}
+Fone: {2}
+E-mail: {3}
+Data Agendamento: {4}
+Hora Agendamento: {5}",
+                ViewModel.Agendamento.Veiculo.Nome,
+                ViewModel.Agendamento.Nome,
+                ViewModel.Agendamento.Telefone,
+                ViewModel.Agendamento.Email,
+                ViewModel.Agendamento.DataAgendamento.ToString("dd/MM/yyyy"),
+                ViewModel.Agendamento.HoraAgendamento.ToString("hh\\:mm")), "OK");
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Agendamento>(this, "Agendamento");
         }
     }
 }

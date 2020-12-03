@@ -17,10 +17,20 @@ namespace MeuPrimeiroAppXamarin.Views
             this.BindingContext = new DetalheViewModel(veiculo);
         }
 
-        private void btnProximaPagina_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            //chama a próxima página
-            Navigation.PushAsync(new AgendamentoView(Veiculo));
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Veiculo>(this, "Proximo", (msg)=> 
+            {
+                //chama a próxima página
+                Navigation.PushAsync(new AgendamentoView(msg));
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Veiculo>(this, "Proximo");
         }
     }
 }

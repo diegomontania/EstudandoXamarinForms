@@ -17,7 +17,7 @@ namespace MeuPrimeiroAppXamarin.Views
             this.BindingContext = new ListagemViewModel();
         }
 
-        //Ao abrir a view
+        //Ao abrir a view capture a mensagem
         protected override void OnAppearing()
         {
             base.OnAppearing();
