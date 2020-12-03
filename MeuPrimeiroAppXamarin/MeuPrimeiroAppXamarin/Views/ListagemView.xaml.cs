@@ -9,16 +9,19 @@ namespace MeuPrimeiroAppXamarin.Views
 {
     public partial class ListagemView : ContentPage
     {
+        public ListagemViewModel ViewModel { get; set; }
+
         public ListagemView()
         {
             InitializeComponent();
 
             //fazendo "Binding" das informações vindas do xaml, passando o contexto de binding para a classe.
-            this.BindingContext = new ListagemViewModel();
+            this.ViewModel = new ListagemViewModel();
+            this.BindingContext = this.ViewModel;
         }
 
-        //Ao abrir a view capture a mensagem
-        protected override void OnAppearing()
+        //Ao abrir a view
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -29,6 +32,9 @@ namespace MeuPrimeiroAppXamarin.Views
                 { 
                     Navigation.PushAsync(new DetalheView(msg)); //chama a próxima página
                 });
+
+            //faz request da api ao abrir a view
+            await this.ViewModel.GetVeiculos();
         }
 
         //cancelando assinatura : evita criar multiplas mensagem do mesmo evento

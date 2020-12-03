@@ -3,22 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="{Binding TituloInicial}"
              x:Class="MeuPrimeiroAppXamarin.Views.ListagemView">
-
-    <!--StackLayout, cria layour para empilhar os componentes e controles-->
-    <!--Grid, cria um layout de "grade"-->
-    <!--ListView, cria um componente para listar dados vindos do c# -->
-
-    <!--Binding, faz a união do componente com o dado recebido-->
-    <!--ItemTapped, chama um metodo que executa uma ação ao tocar em um item da lista-->
-
+    
     <StackLayout>
         <Label Text="Selecione um modelo :" Margin="25" FontSize="Title"></Label>
-        <ListView  x:Name="ListViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="20" SelectedItem="{Binding VeiculoSelecionado}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ImageCell Text="{Binding Nome}" Detail="{Binding Ano}" ImageSource="{Binding ImagemVeiculo}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+
+        <!--ActivityIndicator, Indica se a aplicação está ocupada aguardando alguma requisição-->
+        <ActivityIndicator IsRunning="{Binding AguardandoCarregamento}" IsVisible="{Binding AguardeCarregamento}"></ActivityIndicator>
+
+        <!--StackLayout, cria layour para empilhar os componentes e controles-->
+        <!--Grid, cria um layout de "grade"-->
+        <!--ListView, cria um componente para listar dados vindos do c# -->
+        <!--Binding, faz a união do componente com o dado recebido-->
+        <StackLayout>
+            <ListView  x:Name="ListViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="20" SelectedItem="{Binding VeiculoSelecionado}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Nome}" Detail="{Binding Preco}" ImageSource="{Binding ImagemVeiculo}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
     </StackLayout>
+    
 </ContentPage>

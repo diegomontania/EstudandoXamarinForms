@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace MeuPrimeiroAppXamarin.ViewModels
 {
-    public class DetalheViewModel : INotifyPropertyChanged
+    public class DetalheViewModel : BaseViewModel
     {
         public Veiculo Veiculo { get; set; }
         public ICommand ProximoCommand { get; set; }
@@ -71,7 +71,7 @@ namespace MeuPrimeiroAppXamarin.ViewModels
             set
             {
                 Veiculo.Mp3PlayerSelecionado = value;
-                OnPropertyChanged();
+                OnPropertyChanged();                    //chama metodo da classe herdada para que a view seja atualizada corretamente
                 OnPropertyChanged(nameof(ValorTotal));
             }
         }
@@ -94,11 +94,6 @@ namespace MeuPrimeiroAppXamarin.ViewModels
             }); 
         }
 
-        //implementa interface para que a view seja atualizada corretamente
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+        
     }
 }
