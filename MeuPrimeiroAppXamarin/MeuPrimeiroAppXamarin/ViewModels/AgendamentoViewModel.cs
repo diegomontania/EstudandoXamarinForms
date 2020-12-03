@@ -1,7 +1,9 @@
 ﻿using MeuPrimeiroAppXamarin.Classes;
 using MeuPrimeiroAppXamarin.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -10,6 +12,9 @@ namespace MeuPrimeiroAppXamarin.ViewModels
 {
     public class AgendamentoViewModel
     {
+        //url da api para salvar o agendamento
+        const string URL_SALVA_AGENDAMENTPO = "http://aluracar.herokuapp.com/salvaragendamento";
+
         public Agendamento Agendamento { get; set; }
         public Veiculo Veiculo
         {
@@ -37,6 +42,7 @@ namespace MeuPrimeiroAppXamarin.ViewModels
             get { return Agendamento.Telefone; }
             set { Agendamento.Telefone = value; }
         }
+
         public string Email
         {
             get { return Agendamento.Email; }
@@ -66,6 +72,42 @@ namespace MeuPrimeiroAppXamarin.ViewModels
                 //envia mensagem do tipo do modelo que está sendo utilizado
                 MessagingCenter.Send<Agendamento>(this.Agendamento, "Agendamento");            
             });
+        }
+
+        //responsável por enviar o agendamento (post)
+        public async void SalvarAgendamento()
+        {
+            /*cliente http responsável por enviar e receber respostas HTTP*/
+            HttpClient cliente = new HttpClient();
+
+            //concatena data e hora
+            var dataHoraAgendamento = new DateTime(
+                DataAgendamento.Year, DataAgendamento.Month, DataAgendamento.Day,
+                HoraAgendamento.Hours, HoraAgendamento.Minutes, HoraAgendamento.Seconds);
+
+            //passando para a string json os dados do agendamento
+            var json = JsonConvert.SerializeObject(new
+            {
+                nome = this.Nome,
+                fone = this.Telefone,
+                email = this.Email,
+                carro = this.Veiculo.Nome,
+                preco = this.Veiculo.Preco,
+                dataAgendamento = dataHoraAgendamento,
+            }); 
+
+            var conteudo = new StringContent(json, Encoding.UTF8, "application/json"); /*conteudo que será passado para a api*/
+            var respostaPost = await cliente.PostAsync(URL_SALVA_AGENDAMENTPO, conteudo); /*acessa e url de post para enviar as informações e recebe resposta*/
+
+            //em caso de sucesso da requisição envie uma mensagem pelo MessagingCenter
+            if (respostaPost.IsSuccessStatusCode)
+            {
+                MessagingCenter.Send<Agendamento>(this.Agendamento, "SucessoAgendamento");
+            }
+            else
+            {
+                MessagingCenter.Send<ArgumentException>(new ArgumentException(), "FalhaAgendamento");
+            }
         }
     }
 }

@@ -21,22 +21,24 @@ namespace MeuPrimeiroAppXamarin.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<Agendamento>(this, "Agendamento", (msg) =>
+            MessagingCenter.Subscribe<Agendamento>(this, "Agendamento", async (msg) =>
             {
-                DisplayAlert("Agendamento confirmado!",
-                string.Format(
-@"Veiculo: {0}
-Nome: {1}
-Fone: {2}
-E-mail: {3}
-Data Agendamento: {4}
-Hora Agendamento: {5}",
-                ViewModel.Agendamento.Veiculo.Nome,
-                ViewModel.Agendamento.Nome,
-                ViewModel.Agendamento.Telefone,
-                ViewModel.Agendamento.Email,
-                ViewModel.Agendamento.DataAgendamento.ToString("dd/MM/yyyy"),
-                ViewModel.Agendamento.HoraAgendamento.ToString("hh\\:mm")), "OK");
+                var confirmaUsuario = await DisplayAlert("Salvar Agendamento", "Deseja enviar o agendamento?", "Sim", "Não");
+
+                if (confirmaUsuario)
+                {
+                    this.ViewModel.SalvarAgendamento();
+                }
+            });
+
+            MessagingCenter.Subscribe<Agendamento>(this, "SucessoAgendamento", async (msg) =>
+            {
+                await DisplayAlert("Agendamento", "Agendamento salvo com sucesso", "Ok");
+            });
+
+            MessagingCenter.Subscribe<ArgumentException>(this, "FalhaAgendamento", async (msg) =>
+            {
+                await DisplayAlert("Agendamento", "Falha ao agendandar! Verifique os dados e tente novamente mais tarde!", "Ok");
             });
         }
 
@@ -44,6 +46,8 @@ Hora Agendamento: {5}",
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<Agendamento>(this, "Agendamento");
+            MessagingCenter.Unsubscribe<Agendamento>(this, "SucessoAgendamento");
+            MessagingCenter.Unsubscribe<Agendamento>(this, "FalhaAgendamento");
         }
     }
 }

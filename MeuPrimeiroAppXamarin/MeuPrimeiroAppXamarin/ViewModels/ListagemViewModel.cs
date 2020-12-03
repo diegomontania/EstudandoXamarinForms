@@ -54,7 +54,7 @@ namespace MeuPrimeiroAppXamarin.ViewModels
         public ListagemViewModel()
         {
             this.TituloInicial = "Test Drive - Veículos";
-            this.Veiculos = new ObservableCollection<Veiculo>(); /*new ListagemVeiculos().Veiculos;*/
+            this.Veiculos = new ObservableCollection<Veiculo>();
         }
 
         //responsavel por receber a api
@@ -63,7 +63,7 @@ namespace MeuPrimeiroAppXamarin.ViewModels
             //coloca propriedade como true, antes de receber os a listagem para que o 'loading' apareça
             AguardandoCarregamento = true;
 
-            HttpClient cliente = new HttpClient();
+            HttpClient cliente = new HttpClient();  /*cliente http responsável por enviar e receber respostas HTTP*/
             var resultado = await cliente.GetStringAsync(URL_GET_VEICULOS); /*acessa e aguarda as informações da url*/
 
             //Converte array da requisição em array de objetos
