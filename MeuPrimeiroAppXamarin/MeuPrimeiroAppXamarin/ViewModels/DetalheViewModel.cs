@@ -93,7 +93,5 @@ namespace MeuPrimeiroAppXamarin.ViewModels
                 MessagingCenter.Send(veiculo, "Proximo"); /*envia mensagem do botao utilizando MessagingCenter*/
             }); 
         }
-
-        
     }
 }

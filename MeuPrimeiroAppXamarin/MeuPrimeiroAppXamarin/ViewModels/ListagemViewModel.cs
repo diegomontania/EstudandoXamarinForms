@@ -79,6 +79,7 @@ namespace MeuPrimeiroAppXamarin.ViewModels
                 {
                     Nome = veiculo.nome,
                     Preco = veiculo.preco
+                    //Colocar aqui ano e imagem do veiculo da api
                 });
             }
         }
@@ -92,5 +93,6 @@ namespace MeuPrimeiroAppXamarin.ViewModels
     {
         public string nome { get; set; }
         public int preco { get; set; }
+        //Colocar aqui ano e imagem do veiculo da api
     }
 }

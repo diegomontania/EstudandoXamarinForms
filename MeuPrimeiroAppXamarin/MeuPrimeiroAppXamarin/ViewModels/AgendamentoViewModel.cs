@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace MeuPrimeiroAppXamarin.ViewModels
 {
-    public class AgendamentoViewModel
+    public class AgendamentoViewModel : BaseViewModel
     {
         //url da api para salvar o agendamento
         const string URL_SALVA_AGENDAMENTPO = "http://aluracar.herokuapp.com/salvaragendamento";
@@ -25,7 +25,14 @@ namespace MeuPrimeiroAppXamarin.ViewModels
         public string Nome
         {
             get { return Agendamento.Nome; }
-            set { Agendamento.Nome = value; }
+            set 
+            { 
+                Agendamento.Nome = value;
+
+                /*avisa ao form que houve alteração de valor para habilitar ou nao o botao*/
+                OnPropertyChanged();
+                ((Command)AgendarCommand).ChangeCanExecute(); 
+            }
         }
         public int Idade
         {
@@ -35,19 +42,37 @@ namespace MeuPrimeiroAppXamarin.ViewModels
         public string Cpf
         {
             get { return Agendamento.Cpf; }
-            set { Agendamento.Cpf = value; }
+            set 
+            { 
+                Agendamento.Cpf = value;
+
+                OnPropertyChanged();
+                ((Command)AgendarCommand).ChangeCanExecute();
+            }
         }
         public string Telefone
         {
             get { return Agendamento.Telefone; }
-            set { Agendamento.Telefone = value; }
-        }
+            set 
+            { 
+                Agendamento.Telefone = value;
 
+                OnPropertyChanged();
+                ((Command)AgendarCommand).ChangeCanExecute();
+            }
+        }
         public string Email
         {
             get { return Agendamento.Email; }
-            set { Agendamento.Email = value; }
+            set 
+            { 
+                Agendamento.Email = value;
+
+                OnPropertyChanged();
+                ((Command)AgendarCommand).ChangeCanExecute();
+            }
         }
+
         public DateTime DataAgendamento
         {
             get { return Agendamento.DataAgendamento; }
@@ -71,6 +96,13 @@ namespace MeuPrimeiroAppXamarin.ViewModels
             {
                 //envia mensagem do tipo do modelo que está sendo utilizado
                 MessagingCenter.Send<Agendamento>(this.Agendamento, "Agendamento");            
+            }, ()=> 
+            {
+                //validacao dos campos, não podem ser nulos ou vazios
+                return !string.IsNullOrEmpty(this.Nome)
+                && !string.IsNullOrEmpty(this.Telefone)
+                && !string.IsNullOrEmpty(this.Email);
+                //colocar cpf e idade aqui futuramente na api personalizada
             });
         }
 
@@ -90,6 +122,7 @@ namespace MeuPrimeiroAppXamarin.ViewModels
             {
                 nome = this.Nome,
                 fone = this.Telefone,
+                //colocar cpf e idade aqui futuramente na api personalizada
                 email = this.Email,
                 carro = this.Veiculo.Nome,
                 preco = this.Veiculo.Preco,
