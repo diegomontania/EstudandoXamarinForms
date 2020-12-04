@@ -4,8 +4,9 @@
              Title="{Binding TituloInicial}"
              x:Class="MeuPrimeiroAppXamarin.Views.ListagemView">
 
-    <StackLayout >
-        <Label Text="Selecione um modelo :" Margin="25" FontSize="Title"></Label>
+    <StackLayout >                           <!--Left, top, right, bottom-->
+        <Label Text="Selecione um modelo" Margin="35, 10, 0, 10" FontSize="Title"></Label>
+        
         <!--ActivityIndicator, Indica se a aplicação está ocupada aguardando alguma requisição-->
         <ActivityIndicator IsRunning="{Binding AguardandoCarregamento}" IsVisible="{Binding AguardeCarregamento}" Color="Accent"></ActivityIndicator>
 
@@ -14,7 +15,7 @@
         <!--ListView, cria um componente para listar dados vindos do c# -->
         <!--Binding, faz a união do componente com o dado recebido-->
         <StackLayout>
-            <ListView  x:Name="ListViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="20" SelectedItem="{Binding VeiculoSelecionado}">
+            <ListView  x:Name="ListViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="25, 0, 25, 25" SelectedItem="{Binding VeiculoSelecionado}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell Text="{Binding Nome}" Detail="{Binding Preco}" ImageSource="{Binding ImagemVeiculo}"/>
